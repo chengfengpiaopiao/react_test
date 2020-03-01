@@ -5,8 +5,7 @@ const rules = [{
     use: process.env.NODE_ENV === "development" ? ["style-loader", "css-loader", "sass-loader", "postcss-loader"] : extractTextPlugin.extract({
         fallback: "style-loader",
         use: ["css-loader", "sass-loader", "postcss-loader"],
-        // css中的基础路径
-        publicPath: "../"
+        
     })
 },
     {

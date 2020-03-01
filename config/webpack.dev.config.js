@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const webpackConfigBase = require('./webpack.base.conf');
+const htmlWebpackPlugin = require("html-webpack-plugin");
 
 const webpackConfigDev = {
     mode: 'development', // 通过 mode 声明开发环境
@@ -34,7 +35,21 @@ const webpackConfigDev = {
 
         new webpack.DefinePlugin({
             'process.env.BASE_URL': '\"' + process.env.BASE_URL + '\"'
-        })
+        }),
+        // new htmlWebpackPlugin(
+        //     {
+        //         template: `./public/index.html`, 
+        //         filename:"index.html",
+        //         inject: true,
+        //         hash: false, //开启hash  ?[hash]
+        //         chunks: ['vendor', 'common', "index"],
+        //         minify: process.env.NODE_ENV === "development" ? false : {
+        //             removeComments: true, //移除HTML中的注释
+        //             collapseWhitespace: true, //折叠空白区域 也就是压缩代码
+        //             removeAttributeQuotes: true, //去除属性引用
+        //         },
+        //     }
+        // )
 
     ],
     devtool: "source-map",  // 开启调试模式
