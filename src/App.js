@@ -18,6 +18,7 @@ function App() {
               <div className={styles.App}>this Project is for React</div>
 
           </Link>
+          <div className={styles.AppLink}>this Project is for React</div>
 
       </header>
     </div>

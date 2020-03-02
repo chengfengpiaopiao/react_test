@@ -1,13 +1,35 @@
 const extractTextPlugin = require("extract-text-webpack-plugin");
-const rules = [{
-    test: /\.(css|scss|sass)$/,
-    // 区别开发环境和生成环境
-    use: process.env.NODE_ENV === "development" ? ["style-loader", "css-loader", "sass-loader", "postcss-loader"] : extractTextPlugin.extract({
-        fallback: "style-loader",
-        use: ["css-loader", "sass-loader", "postcss-loader"],
-        
-    })
-},
+
+const rules = [
+    {
+        test: /\.css$/,
+        use: [
+            require.resolve('style-loader'),
+            {
+                loader: require.resolve('css-loader'),
+                options: {
+                    importLoaders: 1,
+                    modules:{ localIdentName:'[name]__[local]__[hash:base64:5]'}
+                },
+            },
+            {
+                loader: require.resolve('postcss-loader'),
+                options: {
+                    // Necessary for external CSS imports to work
+                    // https://github.com/facebookincubator/create-react-app/issues/2677
+                    ident: 'postcss',
+                    plugins: () => [
+                        require('postcss-flexbugs-fixes'),
+
+                    ],
+                },
+            },
+        ],
+    },
+    {
+        test: /\.(less|scss)$/,
+        use: ["style-loader",  "less-loader","sass-loader"]
+    },
     {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
