@@ -1,10 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
 import {
     Link,
 } from 'react-router-dom'
 import styles from  './App.css';
-
+import "../public/banner1.jpg"
 function App() {
   return (
     <div>
@@ -19,7 +18,9 @@ function App() {
 
           </Link>
           <div className={styles.AppLink}>this Project is for React</div>
-
+          <div>
+              <div className={styles.Bg}></div>
+          </div>
       </header>
     </div>
   );
