@@ -1,9 +1,11 @@
 const extractTextPlugin = require("extract-text-webpack-plugin");
+var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const rules = [
     {
         test: /\.css$/,
         use: [
+
             require.resolve('style-loader'),
             {
                 loader: require.resolve('css-loader'),
@@ -37,27 +39,17 @@ const rules = [
     }, {
         test: /\.(gif|png|jpg|woff|svg|ttf|eot)$/,
         use: [{
-            // 需要下载url-loader
-            loader: "url-loader",
-            options: {
-                limit: 5 * 1024, //小于这个时将会已base64位图片打包处理
-                // 图片文件输出的文件夹
-                publicPath: "../images2",
-                outputPath: "images2"
-            }
-        }]
-
-        /*
-        ,{
             loader: 'file-loader',
             options: {
                 name: '[name].[ext]', // 原文件名 原后缀,
                 limit: 10 * 1024,//当图片小于这个值他会生成一个图片的url 如果是一个大于的他会生成一个base64的图片在js里展示
-                outputPath: '../dist/',// 指定打包后的图片位置
-                publicPath: '/',
+                publicPath: "/images2/",
+                outputPath: "images2/"
             }
         }
-         */
+         ]
+
+
     },
     {
         test: /\.html$/,

@@ -3,7 +3,6 @@ import {
     Link,
 } from 'react-router-dom'
 import styles from  './App.css';
-import "../public/banner1.jpg"
 function App() {
   return (
     <div>
