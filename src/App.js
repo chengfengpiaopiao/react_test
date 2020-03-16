@@ -43,6 +43,26 @@ class App extends React.Component{
 
                     </div>
 
+                    1-----------高级属性：not
+                    <nav className={styles.nav}>
+                        <ul>
+                            <li>测试1</li>
+                            <li>测试2</li>
+                            <li>测试3</li>
+                            <li>测试4</li>
+                        </ul>
+                    </nav>
+                    2----------高级属性：黑白图像
+                    <img src="./public/banner1.jpg" width={200} className={styles.white_black_img}/>
+
+                    3---------组件顶部阴影
+                    <div className={styles.shadow_wrap}>CSS</div>
+
+                    4---------给 body 添加行高
+
+                    5--------css滑块
+                    <div className={styles.slider_wrap}><h2>sdds</h2><div>CSS滑块</div></div>
+
                 </header>
             </div>
         );
