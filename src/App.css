@@ -48,6 +48,17 @@
 
 .mouse_on_wrap{
   visibility:hidden;
+
+  transition-property: visibility;
+  transition-duration: 1s;
+  transition-delay: 1s;
+  transition-timing-function: ease;
+
+  /*-webkit-transition: all 3s 2s linear;*/
+  /*-moz-transition: all 3s 2s linear;*/
+  /*-ms-transition: all 3s 2s linear;*/
+  /*-o-transition: all 3s 2s linear;*/
+  /*transition: all 3s 2s linear;*/
 }
 
 .mouse_bg{
@@ -56,6 +67,5 @@
 
 
 .mouse_on_wrap img{
-  transition: 1s height, 1s width;
 }
 

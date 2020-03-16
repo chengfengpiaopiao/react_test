@@ -6,10 +6,13 @@ import styles from  './App.css';
 import $ from 'jquery'
 class App extends React.Component{
     componentDidMount() {
+        var str = "." +styles.mouse_on_wrap;
         $("#show_ewm_img").mouseenter(function () {
+            $(str).addClass(styles.mouse_bg)
+        });
 
-            var str = "#" +styles.mouse_on_wrap;
-            $(".App__mouse_on_wrap__1kp4J").addClass(styles.mouse_bg)
+        $("#show_ewm_img").mouseleave(function () {
+            $(str).removeClass(styles.mouse_bg)
         });
     }
 
@@ -36,7 +39,7 @@ class App extends React.Component{
                     <h2 id="show_ewm_img">鼠标悬浮出现图片</h2>
 
                     <div id="mouse_wrap" className={styles.mouse_on_wrap}>
-                        <img src="./public/banner1.jpg" width={100}/>
+                        <img src="./public/banner1.jpg" width={200}/>
 
                     </div>
 
