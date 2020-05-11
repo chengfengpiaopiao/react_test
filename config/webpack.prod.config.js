@@ -21,8 +21,6 @@ const webpackConfigProd = {
     devtool: 'cheap-module-eval-source-map',
 
     plugins: [
-
-
         // 分离css插件参数为提取出去的路径
         new extractTextPlugin({
             filename: 'css/[name].[hash:8].min.css',

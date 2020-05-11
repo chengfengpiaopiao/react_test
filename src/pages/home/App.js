@@ -24,17 +24,13 @@ class App extends React.Component{
                     {/*<p>*/}
                     {/*  Edit <code>src/App.js</code> and save to reload.*/}
                     {/*</p>*/}
-                    <Link to="/style_simple">
 
-                        <div className={styles.App}>this Project is for React</div>
-
-                    </Link>
                     <div className={styles.AppLink}>this Project is for React</div>
                     <div>
                         <div className={styles.Bg}></div>
                     </div>
 
-                    <div>测试JQuery</div>
+                    <div>首页</div>
 
                     <h2 id="show_ewm_img">鼠标悬浮出现图片</h2>
 

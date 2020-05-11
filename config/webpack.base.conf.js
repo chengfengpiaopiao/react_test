@@ -28,28 +28,33 @@ var getHtmlConfig = function (name, chunks) {
     };
 };
 
+String.prototype.endWith = function (s) {
+    var d = this.length - s.length;
+    return (d >= 0 && this.lastIndexOf(s) == d)
+}
+
 function getEntry() {
     var entry = {};
     //读取src目录所有page入口
-    glob.sync('./src/index.js')
+    glob.sync('./src/pages/**/*.js')
         .forEach(function (name) {
             debugger
-            var start = name.indexOf('src/') + 4,
-                end = name.length - 3;
-            var eArr = [];
-            var n = name.slice(start, end);
-            n = n.slice(0, n.lastIndexOf('/')); //保存各个组件的入口 
-            n = n.split('pages/')[1];
-            eArr.push(name);
-            entry[n] = eArr;
+            if(name.endsWith("index.js")){
+                var start = name.indexOf('src/') + 4,
+                    end = name.length - 3;
+                var eArr = [];
+                var n = name.slice(start, end);
+                n = n.slice(0, n.lastIndexOf('/')); //保存各个组件的入口
+                n = n.split('pages/')[1];
+                eArr.push(name);
+                entry[n] = eArr; //例如[ chain:"./src/pages/chain/index.js"]
+            }
         });
     return entry;
 };
 
 module.exports = {
-    entry: {
-        index:'./src/index.js'
-    },
+    entry: getEntry(),
     module: {
         rules: [...rules]
     },
@@ -87,9 +92,9 @@ module.exports = {
             ignore: ['.*']
         }]),
         // 消除冗余的css代码
-        new purifyCssWebpack({
-            paths: glob.sync(path.join(__dirname, "../public/*/*.html"))
-        }),
+        // new purifyCssWebpack({
+        //     paths: glob.sync(path.join(__dirname, "../public/*/*.html"))
+        // }),
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
@@ -111,17 +116,17 @@ module.exports = {
 //     })
 // })
 
-module.exports.plugins.push(new htmlWebpackPlugin({
-                template: `./public/index.html`,
-                filename:"index.html",
-                inject: true,
-                hash: false, //开启hash  ?[hash]
-                minify: process.env.NODE_ENV === "development" ? false : {
-                    removeComments: true, //移除HTML中的注释
-                    collapseWhitespace: true, //折叠空白区域 也就是压缩代码
-                    removeAttributeQuotes: true, //去除属性引用
-                },
-}));
+// module.exports.plugins.push(new htmlWebpackPlugin({
+//                 template: `./public/index.html`,
+//                 filename:"index.html",
+//                 inject: true,
+//                 hash: false, //开启hash  ?[hash]
+//                 minify: process.env.NODE_ENV === "development" ? false : {
+//                     removeComments: true, //移除HTML中的注释
+//                     collapseWhitespace: true, //折叠空白区域 也就是压缩代码
+//                     removeAttributeQuotes: true, //去除属性引用
+//                 },
+// }));
 
 //自动生成html模板
 // htmlArray.forEach((element) => {
