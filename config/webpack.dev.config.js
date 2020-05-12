@@ -6,7 +6,7 @@ const webpackConfigDev = {
     mode: 'development', // 通过 mode 声明开发环境
     output: {
         path: path.join(__dirname, "build"),
-        filename: "[name].js"
+        filename: "js/[name].js"
     },
     devServer: {
         host: "127.0.0.1",

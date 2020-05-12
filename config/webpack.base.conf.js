@@ -85,7 +85,7 @@ module.exports = {
         //     // Options similar to the same options in webpackOptions.output
         //     // both options are optional
         //     filename: "[name]-[hash:5].css",
-        //     // chunkFilename: "[id].css"
+        //     chunkFilename: "[id].css"
         // }),
     ]
 }
