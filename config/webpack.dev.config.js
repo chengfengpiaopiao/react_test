@@ -5,13 +5,12 @@ const webpackConfigBase = require('./webpack.base.conf');
 const webpackConfigDev = {
     mode: 'development', // 通过 mode 声明开发环境
     output: {
-        path: path.resolve(__dirname, '../dist'),
-        // 打包多出口文件
-        filename: 'js/[name].bundle.js',
+        path: path.join(__dirname, "build"),
+        filename: "[name].js"
     },
     devServer: {
         host: "127.0.0.1",
-        port: "8090",
+        port: "8091",
         historyApiFallback: true,
         overlay: true, // 浏览器页面上显示错误
         // open: true, // 开启浏览器

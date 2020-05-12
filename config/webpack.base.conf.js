@@ -11,22 +11,7 @@ const htmlWebpackPlugin = require("html-webpack-plugin");
 const copyWebpackPlugin = require("copy-webpack-plugin");
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const rules = require("./webpack.rules.conf.js");
-
-// 获取html-webpack-plugin参数的方法
-var getHtmlConfig = function (name, chunks) {
-    return {
-        template: `./src/pages/${name}/index.html`, 
-        filename: process.env.NODE_ENV === "development"? `${name.slice(name.lastIndexOf('/') + 1)}.html`:`html/${name.slice(name.lastIndexOf('/') + 1)}.html`,
-        inject: true,
-        hash: true, //开启hash  ?[hash]
-        chunks: chunks,
-        minify: process.env.NODE_ENV === "development" ? false : {
-            removeComments: true, //移除HTML中的注释
-            collapseWhitespace: true, //折叠空白区域 也就是压缩代码
-            removeAttributeQuotes: true, //去除属性引用
-        },
-    };
-};
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 String.prototype.endWith = function (s) {
     var d = this.length - s.length;
@@ -91,30 +76,31 @@ module.exports = {
             to: './static',
             ignore: ['.*']
         }]),
+        new ExtractTextPlugin("styles.css"),
         // 消除冗余的css代码
         // new purifyCssWebpack({
         //     paths: glob.sync(path.join(__dirname, "../public/*/*.html"))
         // }),
-        new MiniCssExtractPlugin({
-            // Options similar to the same options in webpackOptions.output
-            // both options are optional
-            filename: "[name]-[hash:5].css",
-            // chunkFilename: "[id].css"
-        }),
+        // new MiniCssExtractPlugin({
+        //     // Options similar to the same options in webpackOptions.output
+        //     // both options are optional
+        //     filename: "[name]-[hash:5].css",
+        //     // chunkFilename: "[id].css"
+        // }),
     ]
 }
 
 //配置页面
-// const entryObj = getEntry();
-// debugger
-// const htmlArray = [];
-// Object.keys(entryObj).forEach(element => {
-//     htmlArray.push({
-//         _html: element,
-//         title: '',
-//         chunks: ['vendor', 'common', element]
-//     })
-// })
+const entryObj = getEntry();
+debugger
+const htmlArray = [];
+Object.keys(entryObj).forEach(element => {
+    htmlArray.push({
+        _html: element,
+        title: '',
+        chunks: ['vendor', 'common', element]
+    })
+})
 
 // module.exports.plugins.push(new htmlWebpackPlugin({
 //                 template: `./public/index.html`,
@@ -128,7 +114,23 @@ module.exports = {
 //                 },
 // }));
 
+// 获取html-webpack-plugin参数的方法
+var getHtmlConfig = function (name, chunks) {
+    return {
+        template: `./public/index.html`,
+        filename: process.env.NODE_ENV === "development"? `${name.slice(name.lastIndexOf('/') + 1)}.html`:`html/${name.slice(name.lastIndexOf('/') + 1)}.html`,
+        inject: true,
+        hash: true, //开启hash  ?[hash]
+        chunks: chunks,
+        minify: process.env.NODE_ENV === "development" ? false : {
+            removeComments: true, //移除HTML中的注释
+            collapseWhitespace: true, //折叠空白区域 也就是压缩代码
+            removeAttributeQuotes: true, //去除属性引用
+        },
+    };
+};
+
 //自动生成html模板
-// htmlArray.forEach((element) => {
-//     module.exports.plugins.push(new htmlWebpackPlugin(getHtmlConfig(element._html, element.chunks)));
-// })
+htmlArray.forEach((element) => {
+    module.exports.plugins.push(new htmlWebpackPlugin(getHtmlConfig(element._html, element.chunks)));
+})

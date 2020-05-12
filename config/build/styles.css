@@ -1,0 +1,124 @@
+@charset "UTF-8";
+.App {
+  text-align: center;
+  color: red; }
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    -webkit-animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 20s linear; } }
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white; }
+
+.AppLink {
+  color: blue; }
+
+@-webkit-keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+@keyframes App-logo-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+
+.Bg {
+  background: #fff url(/images2/banner1.jpg);
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px; }
+
+.mouse_on_wrap {
+  visibility: hidden;
+  -webkit-transition-property: visibility;
+  transition-property: visibility;
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-delay: 1s;
+  transition-delay: 1s;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease;
+  /*-webkit-transition: all 3s 2s linear;*/
+  /*-moz-transition: all 3s 2s linear;*/
+  /*-ms-transition: all 3s 2s linear;*/
+  /*-o-transition: all 3s 2s linear;*/
+  /*transition: all 3s 2s linear;*/ }
+
+.mouse_bg {
+  visibility: visible; }
+
+.nav li {
+  width: 100px;
+  border-right: 1px solid #666; }
+
+.nav li:last-child {
+  border-right: none; }
+
+.nav li:not(:last-child) {
+  border-right: 1px solid #666; }
+
+.nav li:not(:last-child):after {
+  content: ","; }
+
+/*7. 使用负的 nth-child 选择项目*/
+.nav li:nth-child(-n+1) {
+  background: blue; }
+
+.white_black_img {
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%); }
+
+.shadow_wrap {
+  text-align: center;
+  width: 100px;
+  padding: 30px 60px;
+  position: relative;
+  background: #666666; }
+
+.shadow_wrap:after {
+  content: "";
+  position: fixed;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8);
+  z-index: 100; }
+
+body {
+  line-height: 1; }
+
+.slider_wrap div {
+  height: 0;
+  width: 100px;
+  overflow: hidden; }
+
+.slider_wrap:hover div {
+  max-height: 1000px;
+  -webkit-transition: .3s ease;
+  transition: .3s ease; }
