@@ -5,7 +5,7 @@ const rules = [
 
     {
         test: /\.(css|less|scss)$/,
-        use: extractTextPlugin.extract({
+        use: process.env.NODE_ENV === "development" ? ["style-loader", "css-loader", "sass-loader", "postcss-loader"] :extractTextPlugin.extract({
             fallback: "style-loader",
             use: ["css-loader", "sass-loader", "postcss-loader"],
             publicPath: "../"
