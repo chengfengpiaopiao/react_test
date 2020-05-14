@@ -9,6 +9,7 @@ const webpackConfigDev = {
         //publicPath: "/assets/",             //html路径访问为http://127.0.0.1:8090/assets/home.html
         filename: "js/[name].js"
     },
+    devtool: 'source-map',
     devServer: {
         //contentBase:'',
         host: "127.0.0.1",
