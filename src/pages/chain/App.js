@@ -35,7 +35,7 @@ class App extends React.Component{
                     <h2 id="show_ewm_img">鼠标悬浮出现图片</h2>
 
                     <div id="mouse_wrap" className={styles.mouse_on_wrap}>
-                        <img src="./images2/banner1.jpg" width={200}/>
+                        <img src="./images/banner1.jpg" width={200}/>
 
                     </div>
 
@@ -49,7 +49,7 @@ class App extends React.Component{
                         </ul>
                     </nav>
                     2----------高级属性：黑白图像
-                    <img src="./images2/banner1.jpg" width={200} className={styles.white_black_img}/>
+                    <img src="./images/banner1.jpg" width={200} className={styles.white_black_img}/>
 
                     3---------组件顶部阴影
                     <div className={styles.shadow_wrap}>CSS</div>

@@ -72,8 +72,8 @@ module.exports = {
     plugins: [
         //静态资源输出
         new copyWebpackPlugin([{
-            from: "src/css/",
-            to:__dirname + "/static/",
+            from: path.join(__dirname,"../src/css/**/*.css"),
+            to: path.join(__dirname,"./build/"),
         }]),
         new ExtractTextPlugin("styles.css"),
         // 消除冗余的css代码
