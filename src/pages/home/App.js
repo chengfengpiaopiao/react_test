@@ -30,7 +30,7 @@ class App extends React.Component{
                         <div className={styles.Bg}></div>
                     </div>
 
-                    <div>首页</div>
+                    <div>Home</div>
 
                     <h2 id="show_ewm_img">鼠标悬浮出现图片</h2>
 
